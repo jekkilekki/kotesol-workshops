@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KOTESOL Workshops: New Workshop</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i">
+    <link rel="stylesheet" href="style.css" type="text/css" media="all">
+
+    <script src="js/libs/jquery-3.2.1.min.js" defer></script>
+    <script src="js/workshop.ajax.js" defer></script>
+
+    <script src="js/jwt.js" defer></script>
+</head>
+
+<body class="index">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+    <header class="masthead">
+        <div class="site-header centered">
+            <div class="site-branding">
+                <a class="home-button" href="index.html">
+                    <img class="site-logo" src="images/Kotesol%20logo_2_0.png">
+                    <h1 class="site-title">Workshops</h1>
+                </a>
+            </div><!-- .site-branding -->
+            <div class="logout">
+                <button id="logout" class="logout-button">Logout</button>
+            </div><!-- .logout -->
+        </div><!-- .site-header -->
+    </header><!-- .masthead -->
+
+    <main class="main-area">
+        <nav class="main-navigation centered">
+            <ul>
+                <li><a href="workshops.html">All Workshops</a></li>
+                <li><a href="new_workshop.html">New Workshop</a></li>
+                <li><a href="review.html">Review</a></li>
+            </ul>
+        </nav>
+
+        <section class="section-content centered">
+            <h2 class="workshop-title">Create a new Workshop:</h2>
+            <form id="workshop-form" method="POST">
+                <label for="title">
+                    <span class="label">Workshop Title</span>
+                    <input type="text" name="title" required></input>
+                </label>
+                <label for="description">
+                    <span class="label">Workshop Description</span>
+                    <textarea name="description" rows="5" cols="50" minlength="20" required></textarea>
+                </label>
+                <label for="date">
+                    <span class="label">Date</span>
+                    <input type="text" name="date" required></input>
+                </label>
+                <label for="location">
+                    <span class="label">Location</span>
+                    <input type="text" name="location" required></input>
+                </label>
+                <hr>
+                <h2 class="workshop-title">Presenter 1</h2>
+                <label for="presenter_1">
+                    <span class="label">Presenter 1</span>
+                    <input type="text" name="presenter_1" required></input>
+                </label>
+                <label for="title_1">
+                    <span class="label">Title 1</span>
+                    <input type="text" name="title_1" required></input>
+                </label>
+                <label for="abstract_1">
+                    <span class="label">Abstract 1</span>
+                    <textarea name="abstract_1" rows="10" cols="50" minlength="20" required></textarea>
+                </label>
+                <label for="bio_1">
+                    <span class="label">Speaker Bio 2</span>
+                    <textarea name="bio_1" rows="10" cols="50" minlength="20" required></textarea>
+                </label>
+                <hr>
+                <h2 class="workshop-title">Presenter 2</h2>
+                <label for="presenter_2">
+                    <span class="label">Presenter 2</span>
+                    <input type="text" name="presenter_2" required></input>
+                </label>
+                <label for="title_2">
+                    <span class="label">Title 2</span>
+                    <input type="text" name="title_2" required></input>
+                </label>
+                <label for="abstract_2">
+                    <span class="label">Abstract 2</span>
+                    <textarea name="abstract_2" rows="10" cols="50" minlength="20" required></textarea>
+                </label>
+                <label for="bio_2">
+                    <span class="label">Speaker Bio 2</span>
+                    <textarea name="bio_2" rows="10" cols="50" minlength="20" required></textarea>
+                </label>
+                <hr>
+                <input type="submit" value="Create Workshop">
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="credits centered">&copy; 2017 KOTESOL Workshops</p>
+        <p class="copyright centered">Designed and built by <a href="http://aaron.kr">Aaron Snowberger</a></p>
+    </footer>
+</body>
+
+</html>
