@@ -9,9 +9,16 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="all">
 
     <script src="js/libs/jquery-3.2.1.min.js" defer></script>
-    <script src="js/workshop.ajax.js" defer></script>
+    <script src="js/libs/html5_qrcode.min.js" defer></script>
+    <script src="js/qrscanner.js" defer></script>
 
-    <script src="js/jwt.js" defer></script>
+    <!-- Try with JWT first -->
+    <!-- <script src="js/workshop.ajax.js" defer></script> -->
+    <!-- <script src="js/jwt.js" defer></script> -->
+    <!-- OAuth stuff here -->
+    <!-- <script src="js/libs/jso.js" defer></script> -->
+    <!-- <script src="js/oauth.js" defer></script> -->
+    <!-- <script src="js/loadlist.ajax.js" defer></script> -->
 </head>
 
 <body class="index">
@@ -43,23 +50,32 @@
         <section class="section-content add-attendees centered">
             <h2 class="workshop-title">Workshop Title</h2>
             <p class="directions">Scan Attendee QR code below, or enter data manually:</p>
-            <div class="skeleton box-placeholder">
+            <div id="qr-scanner" class="skeleton box-placeholder" style="width:100%;height:500px">
 
             </div>
+            <p class="error-msg"></p>
             <hr>
-            <h2>Manual entry</h2>
+
             <form id="add-attendees">
-                <label for="att_name">
-                    <span class="label">Attendee name</span>
-                    <input type="text" name="att_name" required></input>
+              <!--
+              Tutorial for Camera images:
+              https://www.html5rocks.com/en/tutorials/getusermedia/intro/
+              QR Scanner:
+              https://github.com/schmich/instascan
+              -->
+              <input type="file" accept="image/*" capture="camera" />
+              <h2>Manual entry</h2>
+                <label for="last_name">
+                    <span class="label">Last name</span>
+                    <input type="text" name="last_name" required></input>
+                </label>
+                <label for="first_name">
+                    <span class="label">First name</span>
+                    <input type="text" name="first_name" required></input>
                 </label>
                 <label for="att_email">
                     <span class="label">Attendee email</span>
                     <input type="text" name="att_email" required></input>
-                </label>
-                <label for="att_member">
-                    <input type="checkbox" name="att_member" required></input>
-                    <span class="label">Member?</span>
                 </label>
                 <label for="att_membership">
                     <span class="label">Membership expiration</span>
