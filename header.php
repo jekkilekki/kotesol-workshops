@@ -14,8 +14,8 @@
 
     <script src="js/libs/jquery-3.2.1.min.js" defer></script>
     <!-- Try with JWT first -->
-    <script src="js/workshop.ajax.js" defer></script>
-    <script src="js/jwt.js" defer></script>
+    <!-- <script src="js/workshop.ajax.js" defer></script> -->
+    <!-- <script src="js/jwt.js" defer></script> -->
     <!-- OAuth stuff here -->
     <script src="js/libs/jso.js" defer></script>
     <script src="js/oauth.js" defer></script>

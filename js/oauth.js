@@ -7,8 +7,8 @@ const RESTROUTE = RESTROOT + '/wp/v2/workshops/';
 
 var jso = new JSO({
   providerID: "Workshops", // OAuth Client name
-  client_id: "", // OAuth Client I
-  redirect_uri: "./workshops.html", // OAuth Redirect URI
+  client_id: "ICfo4cUqwsbQZzSV6MSz7TMFcRFt1I1Klg9qs4QY", // OAuth Client I
+  redirect_uri: "http://127.0.0.1:63506/htdocs/WorkshopApp/workshops.html", // OAuth Redirect URI
   authorization: ROOTURL + "/oauth/authorize"
 });
 
@@ -29,29 +29,34 @@ function oauthLogout() {
 
 // Monitor the login button:
 $( '#login' ).click( function() {
-  oauthLogin();
+    $( '#login' ).toggle();
+    $( '#logout' ).toggle();
+    oauthLogin();
 });
 
 // Monitor the logout button:
 $( '#logout' ).click( function() {
-  oauthLogout();
+    $( '#logout' ).toggle();
+    $( '#login' ).toggle();
+    oauthLogout();
 });
 
 (function() {
-  // If we are on the home page, redirect to workshops.html:
-  if ( location.pathname == "/" ) {
-    // If we have a token, assume we're logged in:
-    if ( token !== null ) {
-      window.location.href = "/workshops.html";
-    }
-  } else {
+  // // If we are on the home page, redirect to workshops.html:
+  // if ( location.pathname == "/htdocs/WorkshopApp/" ) {
+  //   // If we have a token, assume we're logged in:
+  //   if ( token !== null ) {
+  //     window.location.href = "./workshops.html";
+  //   }
+  // } else {
     // If we have a token, assume we're logged in:
     if ( token !== null ) {
       // Enable JSO jQuery wrapper:
       JSO.enablejQuery($);
-    } else {
-      // If we're not logged in, redirect to the login page:
-      window.location.href = "/";
     }
-  }
+  //   else {
+  //     // If we're not logged in, redirect to the login page:
+  //     window.location.href = "./";
+  //   }
+  // }
 })();

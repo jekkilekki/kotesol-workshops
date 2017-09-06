@@ -739,7 +739,8 @@ Header styles
     line-height: 2em;
 }
 
-.logout-button {
+.logout-button,
+.login-button {
     right: 0%;
     background: transparent;
     padding: 0.5em 1em;
@@ -749,7 +750,10 @@ Header styles
 
 .logout-button:hover,
 .logout-button:active,
-.logout-button:focus {
+.logout-button:focus,
+.login-button:hover,
+.login-button:active,
+.login-button:focus {
     background: white;
     color: #002254;
 }
@@ -819,12 +823,17 @@ Loader overlay
     to {transform: rotate(360deg);}
 }
 
+.loader {
+    text-align: center;
+    margin: 1em;
+}
+
 .ajax-loader {
-	height: 1em;
-	width: 1em;
+	height: 1.6em;
+	width: 1.6em;
     text-align: center;
 	animation: spinner .6s linear infinite;
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .nav-loader {
@@ -945,6 +954,12 @@ Index Page
 Workshops & Attendees Pages
 --------------------------------------------------------------*/
 
+.workshop-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .section-content,
 .workshop,
 .attendee {
@@ -974,6 +989,17 @@ Workshops & Attendees Pages
 
 .workshop-title {
     font-size: 1.5em;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.workshop-date {
+    font-size: 0.9em;
+    /*font-weight: 300;*/
+    opacity: 0.7;
+    display: inline-block;
+    border-bottom: none;
 }
 
 .presenter-name,

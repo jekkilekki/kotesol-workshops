@@ -10,8 +10,8 @@
 
     <script src="js/libs/jquery-3.2.1.min.js" defer></script>
     <!-- Try with JWT first -->
-    <script src="js/workshop.ajax.js" defer></script>
-    <script src="js/jwt.js" defer></script>
+    <!-- <script src="js/workshop.ajax.js" defer></script> -->
+    <!-- <script src="js/jwt.js" defer></script> -->
     <!-- OAuth stuff here -->
     <script src="js/libs/jso.js" defer></script>
     <script src="js/oauth.js" defer></script>
@@ -44,32 +44,35 @@
             </ul>
         </nav>
 
-        <section class="workshop-list centered">
-            <article class="workshop">
+        <nav class="workshop-list centered">
+            <ul>
+            <li class="workshop">
+                <a href="single.html">
+                    <h1 class="workshop-title">Workshop</h1>
+                    <span class="workshop-date"><time datetime="">Sat Sep 3, 2017, 3:00pm</time></span>
+                    <p class="presenter-name">Presenter 1: <span class="presentation-title">Presentation Title</span></p>
+                    <p class="presenter-name">Presenter 2: <span class="presentation-title">Presentation Title</span></p>
+                    <a class="attendee-list-button" href="attendees.html">Attendee List</a>
+                </a>
+            </li>
+            <li class="workshop">
                 <a href="single.html">
                     <h1 class="workshop-title">Workshop</h1>
                     <p class="presenter-name">Presenter 1: <span class="presentation-title">Presentation Title</span></p>
                     <p class="presenter-name">Presenter 2: <span class="presentation-title">Presentation Title</span></p>
                     <a class="attendee-list-button" href="attendees.html">Attendee List</a>
                 </a>
-            </article>
-            <article class="workshop">
+            </li>
+            <li class="workshop">
                 <a href="single.html">
                     <h1 class="workshop-title">Workshop</h1>
                     <p class="presenter-name">Presenter 1: <span class="presentation-title">Presentation Title</span></p>
                     <p class="presenter-name">Presenter 2: <span class="presentation-title">Presentation Title</span></p>
                     <a class="attendee-list-button" href="attendees.html">Attendee List</a>
                 </a>
-            </article>
-            <article class="workshop">
-                <a href="single.html">
-                    <h1 class="workshop-title">Workshop</h1>
-                    <p class="presenter-name">Presenter 1: <span class="presentation-title">Presentation Title</span></p>
-                    <p class="presenter-name">Presenter 2: <span class="presentation-title">Presentation Title</span></p>
-                    <a class="attendee-list-button" href="attendees.html">Attendee List</a>
-                </a>
-            </article>
-        </section>
+            </li>
+            </ul>
+        </nav>
     </main>
 
     <footer class="footer">
