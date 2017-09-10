@@ -68,7 +68,7 @@ function createWorkshopList( object ) {
     for( let i = 0; i < object.length; i++ ) {
         let navListItem =
             '<li class="workshop">' +
-                '<a href="single.html?task=' + object[i].id + '">' +
+                '<a href="single.html?workshop=' + object[i].id + '">' +
                     '<h1 class="workshop-title">' + object[i].title.rendered + '</h1>' +
                     getDate( object[i] ) +
                     getPresenter( object[i], 1 ) +
