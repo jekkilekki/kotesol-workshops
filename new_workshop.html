@@ -15,7 +15,7 @@
     <!-- OAuth stuff here -->
     <script src="js/libs/jso.js" defer></script>
     <script src="js/oauth.js" defer></script>
-    <!-- <script src="js/loadlist.ajax.js" defer></script> -->
+    <script src="js/editworkshop.ajax.js" defer></script>
 </head>
 
 <body class="index">
@@ -32,19 +32,14 @@
             <div class="logout">
                 <button id="logout" class="logout-button">Logout</button>
             </div><!-- .logout -->
+            <!-- <div class="login">
+                <button id="login" class="login-button" style="display: none">Login</button>
+            </div><! .login -->
         </div><!-- .site-header -->
     </header><!-- .masthead -->
 
     <main class="main-area">
-        <nav class="main-navigation centered">
-            <ul>
-                <li><a href="workshops.html">All Workshops</a></li>
-                <li><a href="new_workshop.html">New Workshop</a></li>
-                <li><a href="review.html">Review</a></li>
-            </ul>
-        </nav>
-
-        <section class="section-content centered">
+        <section class="create-workshop section-content centered">
             <h2 class="workshop-title">Create a new Workshop:</h2>
             <form id="workshop-form" method="POST">
                 <label for="title">
@@ -57,7 +52,7 @@
                 </label>
                 <label for="date">
                     <span class="label">Date</span>
-                    <input type="text" name="date" required></input>
+                    <input type="date" name="date" required></input>
                 </label>
                 <label for="location">
                     <span class="label">Location</span>
@@ -67,42 +62,49 @@
                 <h2 class="workshop-title">Presenter 1</h2>
                 <label for="presenter_1">
                     <span class="label">Presenter 1</span>
-                    <input type="text" name="presenter_1" required></input>
+                    <input type="text" name="presenter_1"></input>
                 </label>
                 <label for="title_1">
                     <span class="label">Title 1</span>
-                    <input type="text" name="title_1" required></input>
+                    <input type="text" name="title_1"></input>
                 </label>
                 <label for="abstract_1">
                     <span class="label">Abstract 1</span>
-                    <textarea name="abstract_1" rows="10" cols="50" minlength="20" required></textarea>
+                    <textarea name="abstract_1" rows="10" cols="50" minlength="10"></textarea>
                 </label>
                 <label for="bio_1">
                     <span class="label">Speaker Bio 2</span>
-                    <textarea name="bio_1" rows="10" cols="50" minlength="20" required></textarea>
+                    <textarea name="bio_1" rows="10" cols="50" minlength="10"></textarea>
                 </label>
                 <hr>
                 <h2 class="workshop-title">Presenter 2</h2>
                 <label for="presenter_2">
                     <span class="label">Presenter 2</span>
-                    <input type="text" name="presenter_2" required></input>
+                    <input type="text" name="presenter_2"></input>
                 </label>
                 <label for="title_2">
                     <span class="label">Title 2</span>
-                    <input type="text" name="title_2" required></input>
+                    <input type="text" name="title_2"></input>
                 </label>
                 <label for="abstract_2">
                     <span class="label">Abstract 2</span>
-                    <textarea name="abstract_2" rows="10" cols="50" minlength="20" required></textarea>
+                    <textarea name="abstract_2" rows="10" cols="50" minlength="10"></textarea>
                 </label>
                 <label for="bio_2">
                     <span class="label">Speaker Bio 2</span>
-                    <textarea name="bio_2" rows="10" cols="50" minlength="20" required></textarea>
+                    <textarea name="bio_2" rows="10" cols="50" minlength="10"></textarea>
                 </label>
-                <hr>
                 <input type="submit" value="Create Workshop">
             </form>
         </section>
+
+        <nav class="main-navigation centered">
+            <ul>
+                <li><a href="workshops.html">All Workshops</a></li>
+                <li><a href="new_workshop.html">New Workshop</a></li>
+                <li><a href="review.html">Review</a></li>
+            </ul>
+        </nav>
     </main>
 
     <footer class="footer">
