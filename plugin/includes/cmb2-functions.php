@@ -5,7 +5,7 @@
  * Be sure to replace all instances of 'workshop_' with your project's prefix.
  * http://nacin.com/2010/05/11/in-wordpress-prefix-everything/
  *
- * @category YourThemeOrPlugin
+ * @category Workshop
  * @package  Demo_CMB2
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     https://github.com/CMB2/CMB2
@@ -60,7 +60,7 @@ function workshop_status_cb( $field_args, $field ) {
  *
  * @return bool                 Whether this box and its field are allowed to be viewed.
  */
-function workbook_limit_rest_view_to_logged_in_users( $is_allowed, $cmb_controller ) {
+function workshop_limit_rest_view_to_logged_in_users( $is_allowed, $cmb_controller ) {
     if ( ! is_user_logged_in() ) {
         $is_allowed = false;
     }
@@ -76,7 +76,7 @@ function workbook_limit_rest_view_to_logged_in_users( $is_allowed, $cmb_controll
 add_action( 'cmb2_init', 'workshop_register_rest_api_box' );
 
 function workshop_register_rest_api_box() {
-    $prefix = 'workbook_';
+    $prefix = 'workshop_';
 
     $cmb_rest = new_cmb2_box( array(
         'id'            => $prefix . 'metabox',
@@ -85,8 +85,22 @@ function workshop_register_rest_api_box() {
         'show_in_rest'  => WP_REST_Server::ALLMETHODS, // WP_REST_Server::READABLE|WP_REST_Server::
         // Optional callback to limit box visibility.
         // See: https://github.com/CMB2/CMB2/wiki/REST-API#permissions
-        'get_box_permissions_check_cb' => 'workbook_limit_rest_view_to_logged_in_users',
+        'get_box_permissions_check_cb' => 'workshop_limit_rest_view_to_logged_in_users',
     ) );
+
+	// Location
+	$cmb_rest->add_field( array(
+		'name'			=> esc_html__( 'Location:', 'workshop' ),
+		'id'			=> $prefix . 'location',
+		'type'			=> 'text',
+	) );
+
+	// Date & Time
+	$cmb_rest->add_field( array(
+		'name'			=> esc_html__( 'Date/Time:', 'workshop' ),
+		'id'			=> $prefix . 'datetime',
+		'type'			=> 'text_datetime_timestamp',
+	) );
 
     // First Presenter's Information
     $cmb_rest->add_field( array(
@@ -155,4 +169,68 @@ function workshop_register_rest_api_box() {
         'id'            => $prefix . 'attendee_list',
         'render_row_cb' => 'workshop_status_cb',
     ) );
+}
+
+/**
+ * Hook in and add a box to be available in the CMB2 REST API. Can only happen on the `cmb_controller`
+ *
+ * @link https://github.com/CMB2/CMB2/wiki/REST-API
+ */
+add_action( 'cmb2_init', 'workshop_attendee_box_register_rest_api_box' );
+
+function workshop_attendee_box_register_rest_api_box() {
+    $prefix = 'workshop_attendees_';
+
+    $cmb_rest = new_cmb2_box( array(
+        'id'            => $prefix . 'metabox',
+        'title'         => esc_html__( 'Attendees Data', 'workshop' ),
+        'object_types'  => array( 'workshop' ), // Post type
+        'show_in_rest'  => WP_REST_Server::ALLMETHODS, // WP_REST_Server::READABLE|WP_REST_Server::
+        // Optional callback to limit box visibility.
+        // See: https://github.com/CMB2/CMB2/wiki/REST-API#permissions
+        'get_box_permissions_check_cb' => 'workshop_limit_rest_view_to_logged_in_users',
+    ) );
+
+	// Create Attendee Group
+	$attendee_group = $cmb_rest->add_field( array(
+		'id'			=> 'workshop_attendee_group',
+		'type'			=> 'group',
+		'description'	=> __( 'Add Workshop Attendees', 'workshop' ),
+		// 'repeatable'	=> false, // use false for non-repeatable group
+		'options'		=> array(
+				'group_title'	=> __( 'Attendee {#}', 'workshop' ),
+				'add_button'	=> __( 'Add Attendee', 'workshop' ),
+				'remove_button'	=> __( 'Remove Attendee', 'workshop' ),
+				'sortable'		=> true, // beta
+				// 'closed'		=> true, // true to have the groups closed by default
+		),
+	) );
+
+    // Last Name
+    $cmb_rest->add_group_field( $attendee_group, array(
+        'name'          => esc_html__( 'Last Name:', 'workshop' ),
+        'id'            => 'attendee_last_name',
+        'type'          => 'text',
+    ) );
+
+	// First Name
+	$cmb_rest->add_group_field( $attendee_group, array(
+		'name'			=> esc_html__( 'First Name:', 'workshop' ),
+		'id'			=> 'attendee_first_name',
+		'type'			=> 'text',
+	) );
+
+	// Email
+	$cmb_rest->add_group_field( $attendee_group, array(
+		'name'			=> esc_html__( 'Email:', 'workshop' ),
+		'id'			=> 'attendee_email',
+		'type'			=> 'text_email',
+	) );
+
+	// Membership
+	$cmb_rest->add_group_field( $attendee_group, array(
+		'name'			=> esc_html__( 'Membership:', 'workshop' ),
+		'id'			=> 'attendee_membership',
+		'type'			=> 'text_date'
+	) );
 }

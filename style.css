@@ -690,6 +690,7 @@ input[type="date"] {
     font-size: 1.2em;
     line-height: 1.2em;
     padding: 0.5em;
+    height: 50px;
 }
 
 input[type="checkbox"] {
@@ -973,6 +974,16 @@ Workshops & Attendees Pages
     margin: 0 auto 1em;
     position: relative;
     border: 1px solid white;
+}
+
+.datetime-group {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -1em;
+}
+
+.datetime-group label {
+    margin: 0 1em;
 }
 
 .create-workshop {

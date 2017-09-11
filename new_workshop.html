@@ -50,13 +50,19 @@
                     <span class="label">Workshop Description</span>
                     <textarea name="description" rows="5" cols="50" minlength="20" required></textarea>
                 </label>
-                <label for="date">
-                    <span class="label">Date</span>
-                    <input type="date" name="date" required></input>
-                </label>
+                <div class="datetime-group">
+                    <label for="date">
+                        <span class="label">Date</span>
+                        <input type="date" name="date" required></input>
+                    </label>
+                    <label for="time">
+                        <span class="label">Time</span>
+                        <input type="text" name="time"></input>
+                    </label>
+                </div>
                 <label for="location">
                     <span class="label">Location</span>
-                    <input type="text" name="location" required></input>
+                    <input type="text" name="location"></input>
                 </label>
                 <hr>
                 <h2 class="workshop-title">Presenter 1</h2>

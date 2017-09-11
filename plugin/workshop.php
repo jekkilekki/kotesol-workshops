@@ -62,8 +62,8 @@ function workshop_grant_access( $query ) {
     // BE CAREFUL about which $query you look for
     if ( isset( $query->query_vars[ 'post_type' ] ) ) {
         if ( $query->query_vars[ 'post_type' ] == 'workshop' ) {
-            if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
-                if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ){
+            if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) { // https://github.com/WP-API/WP-API/issues/926
+                if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
                     $query->set( 'post_status', 'private' );
                 } elseif ( current_user_can( 'workshop_coordinator' ) ) {
                     $query->set( 'post_status', 'private' );
@@ -72,4 +72,14 @@ function workshop_grant_access( $query ) {
             }
         }
     }
+}
+
+/**
+ * Remove "Private: " from the titles of private workshops.
+ */
+add_filter( 'the_title', 'workshop_remove_private_prefix' );
+
+function workshop_remove_private_prefix( $title ) {
+    $title = str_replace( 'Private: ', '', $title );
+    return $title;
 }

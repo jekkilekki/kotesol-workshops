@@ -23,6 +23,12 @@ function createWorkshop( formData ) {
     })
 }
 
+function createDateTime( date, time ) {
+    let unixTime = '1504364400';
+
+    return unixTime;
+}
+
 function generateJSON() {
     let formData = {
         "status":   "private",
@@ -30,15 +36,17 @@ function generateJSON() {
         "content":  $( 'textarea[name=description]' ).val(),
         // "date":     $( 'input[name=date]' ).val(),
         "cmb2": {
-            "workbook_metabox": {
-                "workbook_presenter_1": $( 'input[name=presenter_1]' ).val(),
-                "workbook_title_1":     $( 'input[name=title_1]' ).val(),
-                "workbook_abstract_1":  $( 'input[name=abstract_1]' ).val(),
-                "workbook_bio_1":       $( 'input[name=bio_1]' ).val(),
-                "workbook_presenter_2": $( 'input[name=presenter_2]' ).val(),
-                "workbook_title_2":     $( 'input[name=title_2]' ).val(),
-                "workbook_abstract_2":  $( 'input[name=abstract_2]' ).val(),
-                "workbook_bio_2":       $( 'input[name=bio_2]' ).val(),
+            "workshop_metabox": {
+                "workshop_location":    $( 'input[name=location]' ).val(),
+                "workshop_datetime":    createDateTime( $( 'input[name=date]' ).val(), $( 'input[name=time]' ) ),
+                "workshop_presenter_1": $( 'input[name=presenter_1]' ).val(),
+                "workshop_title_1":     $( 'input[name=title_1]' ).val(),
+                "workshop_abstract_1":  $( 'input[name=abstract_1]' ).val(),
+                "workshop_bio_1":       $( 'input[name=bio_1]' ).val(),
+                "workshop_presenter_2": $( 'input[name=presenter_2]' ).val(),
+                "workshop_title_2":     $( 'input[name=title_2]' ).val(),
+                "workshop_abstract_2":  $( 'input[name=abstract_2]' ).val(),
+                "workshop_bio_2":       $( 'input[name=bio_2]' ).val(),
             }
         },
         "attendee_list": false

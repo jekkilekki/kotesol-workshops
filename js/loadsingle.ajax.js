@@ -54,23 +54,23 @@ function createWorkshop( object ) {
 
     var presenterOne =
         '<div class="presenter_1">' +
-        '<h2>' + object.cmb2.workbook_metabox.workbook_title_1 + '</h2>' +
-        '<p class="workshop-meta">' + object.cmb2.workbook_metabox.workbook_presenter_1 + '</p>' +
-        '<div class="presentation-abstract">' + object.cmb2.workbook_metabox.workbook_abstract_1 + '</div>' +
+        '<h2>' + object.cmb2.workshop_metabox.workshop_title_1 + '</h2>' +
+        '<p class="workshop-meta">' + object.cmb2.workshop_metabox.workshop_presenter_1 + '</p>' +
+        '<div class="presentation-abstract">' + object.cmb2.workshop_metabox.workshop_abstract_1 + '</div>' +
         '<div class="presenter-bio">' +
-        '<h3>About ' + object.cmb2.workbook_metabox.workbook_presenter_1 + '</h3>' +
-        object.cmb2.workbook_metabox.workbook_bio_1 +
+        '<h3>About ' + object.cmb2.workshop_metabox.workshop_presenter_1 + '</h3>' +
+        object.cmb2.workshop_metabox.workshop_bio_1 +
         '</div>'
         '</div><!-- .presenter_1 -->';
 
     var presenterTwo =
         '<div class="presenter_2">' +
-        '<h2>' + object.cmb2.workbook_metabox.workbook_title_2 + '</h2>' +
-        '<p class="workshop-meta">' + object.cmb2.workbook_metabox.workbook_presenter_2 + '</p>' +
-        '<div class="presentation-abstract">' + object.cmb2.workbook_metabox.workbook_abstract_2 + '</div>' +
+        '<h2>' + object.cmb2.workshop_metabox.workshop_title_2 + '</h2>' +
+        '<p class="workshop-meta">' + object.cmb2.workshop_metabox.workshop_presenter_2 + '</p>' +
+        '<div class="presentation-abstract">' + object.cmb2.workshop_metabox.workshop_abstract_2 + '</div>' +
         '<div class="presenter-bio">' +
-        '<h3>About ' + object.cmb2.workbook_metabox.workbook_presenter_2 + '</h3>' +
-        object.cmb2.workbook_metabox.workbook_bio_2 +
+        '<h3>About ' + object.cmb2.workshop_metabox.workshop_presenter_2 + '</h3>' +
+        object.cmb2.workshop_metabox.workshop_bio_2 +
         '</div>'
         '</div><!-- .presenter_2 -->';
 

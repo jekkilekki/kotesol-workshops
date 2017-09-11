@@ -20,16 +20,16 @@ function getPresenter( object, num ) {
     let presenter;
 
     if ( num == 1 ) {
-        if ( ! object.cmb2.workbook_metabox.workbook_presenter_1 ) {
+        if ( ! object.cmb2.workshop_metabox.workshop_presenter_1 ) {
             presenter = "";
         } else {
-            presenter = '<p class="presenter-name">' + object.cmb2.workbook_metabox.workbook_presenter_1 + ': <span class="presentation-title">' + object.cmb2.workbook_metabox.workbook_title_1 + '</span></p>';
+            presenter = '<p class="presenter-name">' + object.cmb2.workshop_metabox.workshop_presenter_1 + ': <span class="presentation-title">' + object.cmb2.workshop_metabox.workshop_title_1 + '</span></p>';
         }
     } else {
-        if ( ! object.cmb2.workbook_metabox.workbook_presenter_2 ) {
+        if ( ! object.cmb2.workshop_metabox.workshop_presenter_2 ) {
             presenter = "";
         } else {
-            presenter = '<p class="presenter-name">' + object.cmb2.workbook_metabox.workbook_presenter_2 + ': <span class="presentation-title">' + object.cmb2.workbook_metabox.workbook_title_2 + '</span></p>';
+            presenter = '<p class="presenter-name">' + object.cmb2.workshop_metabox.workshop_presenter_2 + ': <span class="presentation-title">' + object.cmb2.workshop_metabox.workshop_title_2 + '</span></p>';
         }
     }
 
