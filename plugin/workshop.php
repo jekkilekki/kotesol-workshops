@@ -49,6 +49,11 @@ register_deactivation_hook( __FILE__, 'workshop_remove_capabilities' );
 require_once plugin_dir_path( __FILE__ ) . 'includes/status.php';
 
 /**
+ * Add additional User meta information for Workshop attendees.
+ */
+require_once plugin_dir_path( __FILE__ ) . 'includes/usermeta.php';
+
+/**
  * Add in CMB2 for fun new fields.
  */
 require_once plugin_dir_path( __FILE__ ) . 'includes/cmb2-functions.php';

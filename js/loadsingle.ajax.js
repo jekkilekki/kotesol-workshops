@@ -2,7 +2,7 @@
 
 var urlParams = new URLSearchParams( window.location.search );
 const CURRENTID = urlParams.get( 'workshop' );
-console.info( 'Task ID: ', CURRENTID );
+console.info( 'Workshop ID: ', CURRENTID );
 
 function getAttendeeList( object ) {
     let attendeeList = object.attendee_list;
@@ -43,12 +43,25 @@ function getDate( object ) {
     return date + modified;
 }
 
-function createWorkshop( object ) {
+function getAttendeeList( object ) {
+    let list;
+
+    if ( ! object.attendee_list ) {
+        list = '<a class="attendee-list-button" href="add_attendees.html?workshop=' + object.id + '">Attendee List</a>';
+    } else {
+        list = '<a class="attendee-list-button" href="attendees.html?workshop=' + object.id + '">Attendee List</a>';
+    }
+
+    return list;
+}
+
+function buildWorkshop( object ) {
 
     $( '.single-workshop' ).empty().append( '<article class="workshop"></article>' );
 
     var workshop =
         '<h2 class="workshop-title">' + object.title.rendered + '</h2>' +
+        getAttendeeList( object ) +
         '<div class="workshop-meta">' + getDate( object ) + '</div>' +
         '<div class="workshop-description">' + object.content.rendered + '</div>';
 
@@ -94,8 +107,8 @@ function getWorkshop( workshopRoute ) {
     })
 
     .done( function( object ) {
-        createWorkshop( object );
-        //console.info( object );
+        buildWorkshop( object );
+        console.info( object );
     })
 
     .fail( function( object ) {

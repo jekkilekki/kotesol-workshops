@@ -8,9 +8,9 @@ function getAttendeeList( object ) {
     let list;
 
     if ( ! object.attendee_list ) {
-        list = "";
+        list = '<a class="attendee-list-button" href="add_attendees.html?workshop=' + object.id + '">Attendee List</a>';
     } else {
-        list = '<a class="attendee-list-button" href="attendees.html?list=' + object.id + '">Attendee List</a>';
+        list = '<a class="attendee-list-button" href="attendees.html?workshop=' + object.id + '">Attendee List</a>';
     }
 
     return list;
@@ -48,14 +48,21 @@ function getDate( object ) {
         minute:     "2-digit"
     };
 
-    if ( ! object.modified ) {
-        // Create a JS Date object to convert the date to a human readable string
-        let workshopDate = new Date( object.date );
-        date = '<span class="workshop-date"><time datetime="' + object.date + '">' + workshopDate.toLocaleDateString( "en-us", dateOptions ) + '</time></span>';
+    // If no specific date is set in the Workshop, use the Post published or modified date:
+    if ( object.cmb2.workshop_metabox.workshop_datetime == '' ) {
+        if ( ! object.modified ) {
+            // Create a JS Date object to convert the date to a human readable string
+            let workshopDate = new Date( object.date );
+            date = '<p class="workshop-meta workshop-date"><time datetime="' + object.date + '">' + workshopDate.toLocaleDateString( "en-us", dateOptions ) + '</time></p>';
+        } else {
+            // Create a JS Date object to convert the date to a human readable string
+            let workshopModified = new Date( object.modified );
+            date = '<p class="workshop-meta workshop-date modified-date"><time datetime="' + object.modified + '">' + workshopModified.toLocaleDateString( "en-us", dateOptions ) + '</time></p>';
+        }
     } else {
-        // Create a JS Date object to convert the date to a human readable string
-        let workshopModified = new Date( object.modified );
-        date = '<span class="workshop-date modified-date"><time datetime="' + object.modified + '">' + workshopModified.toLocaleDateString( "en-us", dateOptions ) + '</time></span>';
+        // Workshop date is set as a UNIX timestamp, so convert it to a human readable string
+        let workshopUnix = new Date( object.cmb2.workshop_metabox.workshop_datetime * 1000 ); // multiply by 1000 for ms
+        date = '<p class="workshop-meta workshop-date"><time datetime="' + workshopUnix + '">' + workshopUnix.toLocaleDateString( "en-us", dateOptions ) + '</time></p>';
     }
 
     return date;

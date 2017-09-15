@@ -10,7 +10,7 @@
 
     <script src="js/libs/jquery-3.2.1.min.js" defer></script>
     <script src="js/libs/html5_qrcode.min.js" defer></script>
-    <script src="js/qrscanner.js" defer></script>
+    <!-- <script src="js/qrscanner.js" defer></script> -->
 
     <!-- Try with JWT first -->
     <!-- <script src="js/workshop.ajax.js" defer></script> -->
@@ -18,7 +18,7 @@
     <!-- OAuth stuff here -->
     <script src="js/libs/jso.js" defer></script>
     <script src="js/oauth.js" defer></script>
-    <script src="js/loadlist.ajax.js" defer></script>
+    <script src="js/loadattendees.ajax.js" defer></script>
 </head>
 
 <body class="index">
@@ -27,7 +27,7 @@
     <header class="masthead">
         <div class="site-header centered">
             <div class="site-branding">
-                <a class="home-button" href="index.html">
+                <a class="home-button" href="workshops.html">
                     <img class="site-logo" src="images/Kotesol%20logo_2_0.png">
                     <h1 class="site-title">Workshops</h1>
                 </a>
@@ -44,20 +44,18 @@
     <main class="main-area">
         <nav class="main-navigation centered">
             <ul>
-                <li><a href="attendees.html">All Attendees</a></li>
-                <li><a href="add_attendees.html">Add Attendees</a></li>
+                <li class="all-attendees-button"><a href="attendees.html">All Attendees</a></li>
+                <li class="add-attendees-button"><a href="add_attendees.html">Add Attendees</a></li>
                 <li><a href="workshops.html">Workshops</a></li>
             </ul>
         </nav>
 
         <section class="section-content add-attendees centered">
-            <h2 class="workshop-title">Workshop Title</h2>
-            <p class="directions">Scan Attendee QR code below, or enter data manually:</p>
-            <div id="qr-scanner" class="skeleton box-placeholder" style="width:100%;height:500px">
-
-            </div>
-            <p class="error-msg"></p>
-            <hr>
+            <hgroup class="workshop-meta">
+                <h2 class="page-title">Add Attendees</h2>
+                <!-- Workshop Info added by WP REST API -->
+            </hgroup>
+            <a class="button list-button" href="qrscanner.html">Scan QR Code</a>
 
             <form id="add-attendees">
               <!--
@@ -66,8 +64,8 @@
               QR Scanner:
               https://github.com/schmich/instascan
               -->
-              <input type="file" accept="image/*" capture="camera" />
-              <h2>Manual entry</h2>
+              <!-- <input type="file" accept="image/*" capture="camera" /> -->
+              <!-- <h2>Manual entry</h2> -->
                 <label for="last_name">
                     <span class="label">Last name</span>
                     <input type="text" name="last_name" required></input>
@@ -89,28 +87,7 @@
         </section>
 
         <section class="attendee-list centered">
-            <h2>Attendee List</h2>
-            <article class="attendee">
-                <a href="single.html">
-                    <p class="attendee-name">Webster, Susan</p>
-                    <a href="mailto:prof.s.webster@gmail.com" class="attendee-email">prof.s.webster@gmail.com</a>
-                    <span class="attendee-membership">6/30/2018</span>
-                </a>
-            </article>
-            <article class="attendee">
-                <a href="single.html">
-                    <p class="attendee-name">Zwaal, Ingrid</p>
-                    <a href="mailto:scottietoy@gmail.com" class="attendee-email">scottietoy@gmail.com</a>
-                    <span class="attendee-membership">9/30/2017</span>
-                </a>
-            </article>
-            <article class="attendee">
-                <a href="single.html">
-                    <p class="attendee-name">Snowberger, Aaron</p>
-                    <a href="mailto:aaron.jju@gmail.com" class="attendee-email">aaron.jju@gmail.com</a>
-                    <span class="attendee-membership">5/31/2018</span>
-                </a>
-            </article>
+            <!-- Attendee List populated by WP REST API -->
         </section>
     </main>
 

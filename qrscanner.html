@@ -4,18 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KOTESOL Workshops: All Workshops</title>
+    <title>KOTESOL Workshops: Add Attendees</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i">
     <link rel="stylesheet" href="style.css" type="text/css" media="all">
 
     <script src="js/libs/jquery-3.2.1.min.js" defer></script>
+    <script src="js/libs/html5_qrcode.min.js" defer></script>
+    <script src="js/qrscanner.js" defer></script>
+
     <!-- Try with JWT first -->
     <!-- <script src="js/workshop.ajax.js" defer></script> -->
     <!-- <script src="js/jwt.js" defer></script> -->
     <!-- OAuth stuff here -->
     <script src="js/libs/jso.js" defer></script>
     <script src="js/oauth.js" defer></script>
-    <script src="js/loadlist.ajax.js" defer></script>
+    <!-- <script src="js/loadlist.ajax.js" defer></script> -->
 </head>
 
 <body class="index">
@@ -38,18 +41,14 @@
         </div><!-- .site-header -->
     </header><!-- .masthead -->
 
-    <main class="main-area workshops">
-        <nav class="main-navigation centered">
-            <ul>
-                <li><a href="workshops.html">All Workshops</a></li>
-                <li><a href="new_workshop.html">New Workshop</a></li>
-                <li><a href="review.html">Review</a></li>
-            </ul>
-        </nav>
+    <main class="main-area">
 
-        <nav class="workshop-list centered">
-            <!-- WP REST API populates our list of Workshops here -->
-        </nav>
+        <section class="section-content add-attendees centered">
+            <p class="directions">Scan Attendee QR code below, or enter data manually:</p>
+            <div id="qr-scanner" class="skeleton box-placeholder" style="width:100%;height:500px">
+
+            </div>
+            <p class="error-msg"></p>
     </main>
 
     <footer class="footer">

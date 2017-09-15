@@ -15,7 +15,7 @@
     <!-- OAuth stuff here -->
     <script src="js/libs/jso.js" defer></script>
     <script src="js/oauth.js" defer></script>
-    <script src="js/loadlist.ajax.js" defer></script>
+    <script src="js/loadattendees.ajax.js" defer></script>
 </head>
 
 <body class="index">
@@ -24,7 +24,7 @@
     <header class="masthead">
         <div class="site-header centered">
             <div class="site-branding">
-                <a class="home-button" href="index.html">
+                <a class="home-button" href="workshops.html">
                     <img class="site-logo" src="images/Kotesol%20logo_2_0.png">
                     <h1 class="site-title">Workshops</h1>
                 </a>
@@ -41,35 +41,20 @@
     <main class="main-area">
         <nav class="main-navigation centered">
             <ul>
-                <li><a href="attendees.html">All Attendees</a></li>
-                <li><a href="add_attendees.html">Add Attendees</a></li>
+                <li class="all-attendees-button"><a href="attendees.html">All Attendees</a></li>
+                <li class="add-attendees-button"><a href="add_attendees.html">Add Attendees</a></li>
                 <li><a href="workshops.html">Workshops</a></li>
             </ul>
         </nav>
 
+        <hgroup class="workshop-meta centered">
+            <h2 class="page-title">Attendee List</h2>
+            <!-- Workshop Info added by WP REST API -->
+        </hgroup>
+
         <section class="attendee-list centered">
-            <h2 class="workshop-title">Workshop Title Attendees</h2>
-            <article class="attendee">
-                <a href="single.html">
-                    <p class="attendee-name">Webster, Susan</p>
-                    <a href="mailto:prof.s.webster@gmail.com" class="attendee-email">prof.s.webster@gmail.com</a>
-                    <span class="attendee-membership">6/30/2018</span>
-                </a>
-            </article>
-            <article class="attendee">
-                <a href="single.html">
-                    <p class="attendee-name">Zwaal, Ingrid</p>
-                    <a href="mailto:scottietoy@gmail.com" class="attendee-email">scottietoy@gmail.com</a>
-                    <span class="attendee-membership">9/30/2017</span>
-                </a>
-            </article>
-            <article class="attendee">
-                <a href="single.html">
-                    <p class="attendee-name">Snowberger, Aaron</p>
-                    <a href="mailto:aaron.jju@gmail.com" class="attendee-email">aaron.jju@gmail.com</a>
-                    <span class="attendee-membership">5/31/2018</span>
-                </a>
-            </article>
+
+            <!-- Attendee List populated by WP REST API -->
         </section>
     </main>
 

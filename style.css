@@ -697,13 +697,18 @@ input[type="checkbox"] {
     float: left;
 }
 
-input[type="submit"] {
+input[type="submit"],
+button {
     background: white;
     padding: 0.5em 1em;
     margin: 3em auto;
     color: #002254;
     border: 3px solid;
     /*width: 160px;*/
+}
+
+button {
+    margin: 0;
 }
 
 input[type="submit"]:hover,
@@ -1007,18 +1012,33 @@ Workshops & Attendees Pages
     padding: 0;
 }
 
+.workshop a {
+    border-bottom: none;
+}
+
 .workshop-title {
     font-size: 1.5em;
-    display: inline-block;
+    /*display: inline-block;*/
     text-decoration: none;
     border-bottom: none;
 }
 
+.workshop-meta .page-title {
+    margin-bottom: 0;
+}
+
+.workshop-meta .workshop-title {
+    font-size: 1em;
+    margin: 0;
+}
+
 .workshop-date {
-    font-size: 0.9em;
-    /*font-weight: 300;*/
-    opacity: 0.7;
-    display: inline-block;
+    font-size: 0.7em;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 1em!important;
+    opacity: 0.5;
     border-bottom: none;
 }
 
@@ -1033,6 +1053,7 @@ Workshops & Attendees Pages
     opacity: 0.7;
 }
 
+.list-button,
 .attendee-list-button,
 .attendee-membership {
     position: absolute;
@@ -1043,6 +1064,9 @@ Workshops & Attendees Pages
     border: 1px solid #f2f2f5;
 }
 
+.list-button:hover,
+.list-button:active,
+.list-button:focus
 .attendee-list-button:hover,
 .attendee-list-button:active,
 .attendee-list-button:focus {
