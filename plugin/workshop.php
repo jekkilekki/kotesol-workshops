@@ -49,6 +49,13 @@ register_deactivation_hook( __FILE__, 'workshop_remove_capabilities' );
 require_once plugin_dir_path( __FILE__ ) . 'includes/status.php';
 
 /**
+ * Register Attendee Post Type.
+ */
+require_once plugin_dir_path( __FILE__ ) . 'includes/attendees.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/attendees-workshop-meta-box.php';
+// require_once plugin_dir_path( __FILE__ ) . 'includes/class-workshop-attendees.php';
+
+/**
  * Add additional User meta information for Workshop attendees.
  */
 require_once plugin_dir_path( __FILE__ ) . 'includes/usermeta.php';

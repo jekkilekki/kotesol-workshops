@@ -28,6 +28,7 @@ function workshop_add_capabilities() {
         $role->add_cap( 'edit_workshops' );
         $role->add_cap( 'publish_workshops' );
         $role->add_cap( 'edit_published_workshops' );
+        $role->add_cap( 'add_attendees');
     }
 
     $manager_roles = array( 'administrator', 'editor' );

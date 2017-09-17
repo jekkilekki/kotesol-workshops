@@ -9,7 +9,14 @@ function buildAttendeeList( object ) {
     $( '.all-attendees-button a' ).attr( 'href', 'attendees.html?workshop=' + object.id );
     $( '.add-attendees-button a' ).attr( 'href', 'add_attendees.html?workshop=' + object.id );
 
-    $( '.attendee-list' ).empty().append( '<h2>' + object.title.rendered + ': Attendee List</h2>' );
+    // Load the Workshop Meta Information
+    $( '.workshop-meta' ).append( '<p class="workshop-title">' +
+                                  '<a href="single.html?workshop=' + object.id + '">' +
+                                  object.title.rendered +
+                                  '</p>' );
+    $( '.workshop-meta' ).append( getDate( object ) );
+
+    $( '.attendee-list' ).empty().append( '<h2>Attendee List</h2>' );
 
     var attendees = object.attendees; // Array of attendees
 
@@ -66,8 +73,6 @@ function getAttendeeList( workshopRoute ) {
     })
 
     .done( function( object ) {
-        $( '.workshop-meta' ).append( '<p class="workshop-title">' + object.title.rendered + '</p>' );
-        $( '.workshop-meta' ).append( getDate( object ) );
         buildAttendeeList( object );
         console.info( object );
     })

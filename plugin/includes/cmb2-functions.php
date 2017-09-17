@@ -78,7 +78,7 @@ add_action( 'cmb2_init', 'workshop_register_rest_api_box' );
 function workshop_register_rest_api_box() {
     $prefix = 'workshop_';
 
-    $cmb_rest = new_cmb2_box( array(
+    $cmb_workshop_rest = new_cmb2_box( array(
         'id'            => $prefix . 'metabox',
         'title'         => esc_html__( 'Workshop Data', 'workshop' ),
         'object_types'  => array( 'workshop' ), // Post type
@@ -89,33 +89,33 @@ function workshop_register_rest_api_box() {
     ) );
 
 	// Location
-	$cmb_rest->add_field( array(
+	$cmb_workshop_rest->add_field( array(
 		'name'			=> esc_html__( 'Location:', 'workshop' ),
 		'id'			=> $prefix . 'location',
 		'type'			=> 'text',
 	) );
 
 	// Date & Time
-	$cmb_rest->add_field( array(
+	$cmb_workshop_rest->add_field( array(
 		'name'			=> esc_html__( 'Date/Time:', 'workshop' ),
 		'id'			=> $prefix . 'datetime',
 		'type'			=> 'text_datetime_timestamp',
 	) );
 
     // First Presenter's Information
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Presenter 1 Name:', 'workshop' ),
         'id'            => $prefix . 'presenter_1',
         'type'          => 'text',
     ) );
 
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Title 1:', 'workshop' ),
         'id'            => $prefix . 'title_1',
         'type'          => 'text',
     ) );
 
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Abstract 1:', 'workshop' ),
         'id'            => $prefix . 'abstract_1',
         'type'          => 'wysiwyg',
@@ -124,7 +124,7 @@ function workshop_register_rest_api_box() {
         ),
     ) );
 
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Speaker Bio 1:', 'workshop' ),
         'id'            => $prefix . 'bio_1',
         'type'          => 'wysiwyg',
@@ -134,19 +134,19 @@ function workshop_register_rest_api_box() {
     ) );
 
     // Second Presenter's Information
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Presenter 2 Name:', 'workshop' ),
         'id'            => $prefix . 'presenter_2',
         'type'          => 'text',
     ) );
 
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Title 2:', 'workshop' ),
         'id'            => $prefix . 'title_2',
         'type'          => 'text',
     ) );
 
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Abstract 2:', 'workshop' ),
         'id'            => $prefix . 'abstract_2',
         'type'          => 'wysiwyg',
@@ -155,7 +155,7 @@ function workshop_register_rest_api_box() {
         ),
     ) );
 
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Speaker Bio 2:', 'workshop' ),
         'id'            => $prefix . 'bio_2',
         'type'          => 'wysiwyg',
@@ -164,7 +164,7 @@ function workshop_register_rest_api_box() {
         ),
     ) );
 
-    $cmb_rest->add_field( array(
+    $cmb_workshop_rest->add_field( array(
         'name'          => esc_html__( 'Attendee List', 'workshop' ),
         'id'            => $prefix . 'attendee_list',
         'render_row_cb' => 'workshop_status_cb',
@@ -181,56 +181,102 @@ add_action( 'cmb2_init', 'workshop_attendee_box_register_rest_api_box' );
 function workshop_attendee_box_register_rest_api_box() {
     $prefix = 'workshop_attendees_';
 
-    $cmb_rest = new_cmb2_box( array(
+    $cmb_attendee_rest = new_cmb2_box( array(
         'id'            => $prefix . 'metabox',
-        'title'         => esc_html__( 'Attendees Data', 'workshop' ),
-        'object_types'  => array( 'workshop' ), // Post type
+        'title'         => esc_html__( 'Attendee Info', 'workshop' ),
+        'object_types'  => array( 'attendee' ), // Post type
         'show_in_rest'  => WP_REST_Server::ALLMETHODS, // WP_REST_Server::READABLE|WP_REST_Server::
         // Optional callback to limit box visibility.
         // See: https://github.com/CMB2/CMB2/wiki/REST-API#permissions
         'get_box_permissions_check_cb' => 'workshop_limit_rest_view_to_logged_in_users',
     ) );
 
-	// Create Attendee Group
-	$attendee_group = $cmb_rest->add_field( array(
-		'id'			=> 'workshop_attendee_group',
-		'type'			=> 'group',
-		'description'	=> __( 'Add Workshop Attendees', 'workshop' ),
-		// 'repeatable'	=> false, // use false for non-repeatable group
-		'options'		=> array(
-				'group_title'	=> __( 'Attendee {#}', 'workshop' ),
-				'add_button'	=> __( 'Add Attendee', 'workshop' ),
-				'remove_button'	=> __( 'Remove Attendee', 'workshop' ),
-				'sortable'		=> true, // beta
-				// 'closed'		=> true, // true to have the groups closed by default
-		),
-	) );
-
     // Last Name
-    $cmb_rest->add_group_field( $attendee_group, array(
+    $cmb_attendee_rest->add_field( array(
         'name'          => esc_html__( 'Last Name:', 'workshop' ),
         'id'            => 'attendee_last_name',
         'type'          => 'text',
     ) );
 
 	// First Name
-	$cmb_rest->add_group_field( $attendee_group, array(
+	$cmb_attendee_rest->add_field( array(
 		'name'			=> esc_html__( 'First Name:', 'workshop' ),
 		'id'			=> 'attendee_first_name',
 		'type'			=> 'text',
 	) );
 
 	// Email
-	$cmb_rest->add_group_field( $attendee_group, array(
+	$cmb_attendee_rest->add_field( array(
 		'name'			=> esc_html__( 'Email:', 'workshop' ),
 		'id'			=> 'attendee_email',
 		'type'			=> 'text_email',
 	) );
 
 	// Membership
-	$cmb_rest->add_group_field( $attendee_group, array(
+	$cmb_attendee_rest->add_field( array(
 		'name'			=> esc_html__( 'Membership:', 'workshop' ),
 		'id'			=> 'attendee_membership',
 		'type'			=> 'text_date'
 	) );
+
+	// Chapter
+	$cmb_attendee_rest->add_field( array(
+		'name'           => esc_html__( 'Chapter:', 'workshop' ),
+		'desc'           => esc_html__( 'Which KOTESOL chapter does this attendee belong to? (if applicable)', 'workshop' ),
+		'id'             => 'attendee_chapter_select',
+		'taxonomy'       => 'chapter', //Enter Taxonomy Slug
+		'type'           => 'taxonomy_select',
+		'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
+	) );
+
+	/**
+	 * Additional Attendee Data
+	 */
+	$cmb_attendee_additional_rest = new_cmb2_box( array(
+        'id'            => $prefix . 'additional_metabox',
+        'title'         => esc_html__( 'Additional Data', 'workshop' ),
+        'object_types'  => array( 'attendee' ), // Post type
+        'show_in_rest'  => WP_REST_Server::ALLMETHODS, // WP_REST_Server::READABLE|WP_REST_Server::
+        // Optional callback to limit box visibility.
+        // See: https://github.com/CMB2/CMB2/wiki/REST-API#permissions
+        'get_box_permissions_check_cb' => 'workshop_limit_rest_view_to_logged_in_users',
+    ) );
+
+	// Website
+	$cmb_attendee_additional_rest->add_field( array(
+		'name'			=> esc_html__( 'Website:', 'workshop' ),
+		'id'			=> 'attendee_website',
+		'type'			=> 'text_url',
+	) );
+
+	// Facebook
+	$cmb_attendee_additional_rest->add_field( array(
+		'name'			=> esc_html__( 'Facebook:', 'workshop' ),
+		'id'			=> 'attendee_facebook',
+		'type'			=> 'text_url',
+	) );
+
+	// Twitter
+	$cmb_attendee_additional_rest->add_field( array(
+		'name'			=> esc_html__( 'Twitter:', 'workshop' ),
+		'id'			=> 'attendee_twitter',
+		'type'			=> 'text_url',
+	) );
+
+	// LinkedIn
+	$cmb_attendee_additional_rest->add_field( array(
+		'name'			=> esc_html__( 'LinkedIn:', 'workshop' ),
+		'id'			=> 'attendee_linkedin',
+		'type'			=> 'text_url',
+	) );
+
+	// Bio
+	$cmb_attendee_additional_rest->add_field( array(
+        'name'          => esc_html__( 'About Attendee:', 'workshop' ),
+        'id'            => $prefix . 'bio',
+        'type'          => 'wysiwyg',
+        'options'       => array(
+            'textarea_rows' => 5,
+        ),
+    ) );
 }
