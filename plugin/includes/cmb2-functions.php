@@ -194,28 +194,28 @@ function workshop_attendee_box_register_rest_api_box() {
     // Last Name
     $cmb_attendee_rest->add_field( array(
         'name'          => esc_html__( 'Last Name:', 'workshop' ),
-        'id'            => 'attendee_last_name',
+        'id'            => $prefix . 'last_name',
         'type'          => 'text',
     ) );
 
 	// First Name
 	$cmb_attendee_rest->add_field( array(
 		'name'			=> esc_html__( 'First Name:', 'workshop' ),
-		'id'			=> 'attendee_first_name',
+		'id'			=> $prefix . 'first_name',
 		'type'			=> 'text',
 	) );
 
 	// Email
 	$cmb_attendee_rest->add_field( array(
 		'name'			=> esc_html__( 'Email:', 'workshop' ),
-		'id'			=> 'attendee_email',
+		'id'			=> $prefix . 'email',
 		'type'			=> 'text_email',
 	) );
 
 	// Membership
 	$cmb_attendee_rest->add_field( array(
 		'name'			=> esc_html__( 'Membership:', 'workshop' ),
-		'id'			=> 'attendee_membership',
+		'id'			=> $prefix . 'membership',
 		'type'			=> 'text_date'
 	) );
 
@@ -223,7 +223,7 @@ function workshop_attendee_box_register_rest_api_box() {
 	$cmb_attendee_rest->add_field( array(
 		'name'           => esc_html__( 'Chapter:', 'workshop' ),
 		'desc'           => esc_html__( 'Which KOTESOL chapter does this attendee belong to? (if applicable)', 'workshop' ),
-		'id'             => 'attendee_chapter_select',
+		'id'             => $prefix . 'chapter_select',
 		'taxonomy'       => 'chapter', //Enter Taxonomy Slug
 		'type'           => 'taxonomy_select',
 		'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
@@ -245,28 +245,28 @@ function workshop_attendee_box_register_rest_api_box() {
 	// Website
 	$cmb_attendee_additional_rest->add_field( array(
 		'name'			=> esc_html__( 'Website:', 'workshop' ),
-		'id'			=> 'attendee_website',
+		'id'			=> $prefix . 'website',
 		'type'			=> 'text_url',
 	) );
 
 	// Facebook
 	$cmb_attendee_additional_rest->add_field( array(
 		'name'			=> esc_html__( 'Facebook:', 'workshop' ),
-		'id'			=> 'attendee_facebook',
+		'id'			=> $prefix . 'facebook',
 		'type'			=> 'text_url',
 	) );
 
 	// Twitter
 	$cmb_attendee_additional_rest->add_field( array(
 		'name'			=> esc_html__( 'Twitter:', 'workshop' ),
-		'id'			=> 'attendee_twitter',
+		'id'			=> $prefix . 'twitter',
 		'type'			=> 'text_url',
 	) );
 
 	// LinkedIn
 	$cmb_attendee_additional_rest->add_field( array(
 		'name'			=> esc_html__( 'LinkedIn:', 'workshop' ),
-		'id'			=> 'attendee_linkedin',
+		'id'			=> $prefix . 'linkedin',
 		'type'			=> 'text_url',
 	) );
 

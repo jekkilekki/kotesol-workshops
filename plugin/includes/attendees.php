@@ -41,11 +41,11 @@ function workshop_view_attendees_list() {
         $add_new_link = admin_url( "post-new.php?post_type=attendee" );
         echo '<a href="' . esc_url( $add_new_link ) . '" class="add-new-h2">' . esc_html__( 'Add New', 'workshop' ) . '</a>';
         echo '</h2>';
-        // $cap_list_table = new Workshop_Attendees_WP_List_Table();
-        // $cap_list_table->prepare_items();
+        $attendee_list_table = new Workshop_Attendees_WP_List_Table();
+        $attendee_list_table->prepare_items();
         echo '<form id="workshop-attendees-filter" action="" method="GET">';
         echo '<input type="hidden" name="page" value="view-workshop-attendees" />';
-        // $cap_list_table->display();
+        $attendee_list_table->display();
         echo '</form>';
         echo '</div>';
     }

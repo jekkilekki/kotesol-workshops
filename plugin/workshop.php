@@ -53,7 +53,7 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/status.php';
  */
 require_once plugin_dir_path( __FILE__ ) . 'includes/attendees.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/attendees-workshop-meta-box.php';
-// require_once plugin_dir_path( __FILE__ ) . 'includes/class-workshop-attendees.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-workshop-attendees-wp-list-table.php';
 
 /**
  * Add additional User meta information for Workshop attendees.
